@@ -1,0 +1,29 @@
+<h1>Welcome, sinner</h1>
+
+<h3>Please sign <em>up</em> to lift your burdens</h3>
+
+<form action="<%= users_path %>" method="POST"
+    autocomplete="false">
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <input type="email" name="user[email]"
+    placeholder="your email address"><br/>
+  <input type="password" name="user[password]"
+    placeholder="desired password"><br/>
+  <input type="submit" value="Sign up">
+</form>
+
+<h3>Please sign <em>in</em> to lift your burdens</h3>
+
+<form action="<%= session_path %>" method="POST"
+    autocomplete="false">
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <input type="email" name="user[email]"
+    placeholder="your email address"><br/>
+  <input type="password" name="user[password]"
+    placeholder="desired password"><br/>
+  <input type="submit" value="Sign in">
+</form>
