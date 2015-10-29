@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transgressions
   root 'application#welcome'
 
   get '/amiloggedin' => 'application#amiloggedin'

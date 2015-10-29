@@ -1,0 +1,10 @@
+// Place all the styles related to the transgressions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+form input, form select {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: 1px solid green;
+  width: 75%;
+}

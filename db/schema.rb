@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029150245) do
+ActiveRecord::Schema.define(version: 20151029180427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "transgressions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "description", null: false
+    t.string   "sin_type",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "transgressions", ["sin_type"], name: "index_transgressions_on_sin_type", using: :btree
+  add_index "transgressions", ["user_id"], name: "index_transgressions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -25,4 +36,5 @@ ActiveRecord::Schema.define(version: 20151029150245) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "transgressions", "users"
 end

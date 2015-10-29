@@ -14,10 +14,63 @@
  *= require_self
  */
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 24px;
+}
+
 div.alert {
   background: pink;
   border: 1px solid black;
   border-radius: 7px;
   padding: 1rem;
   font-size: 1.4rem;
+}
+
+header {
+  height: 4rem;
+
+  border-bottom: 2px solid grey;
+}
+
+header {
+  background: #222;
+  color: deeppink;
+  padding: 0.5rem;
+}
+
+.logo > img {
+  display: block;
+  float: left;
+  height: 3rem;
+  padding: 0.5rem;
+
+  transition: 0.5s transform bounce;
+}
+
+.logo > img.dancing {
+  transform: scaleX(-1);
+}
+
+span {
+  font-family: cursive;
+  display: block;
+  float: left;
+  font-size: 2.6rem;
+  line-height: 3rem;
+}
+
+nav {
+  float: right;
+  color: white;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  line-height: 3rem;
 }

@@ -24,4 +24,12 @@ class ApplicationController < ActionController::Base
       @current_user = false
     end
   end
+
+  def logged_in?
+    !!current_user
+  end
+
+  def require_current_user
+    redirect_to root_path unless logged_in?
+  end
 end

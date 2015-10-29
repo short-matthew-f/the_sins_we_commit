@@ -1,0 +1,17 @@
+<header>
+  <div class="logo">
+    <%= image_tag 'logo.png' %>
+    <span>
+      The Sins We Commit
+    </span>
+  </div>
+  <nav>
+    <% if current_user %>
+      <a href="<%= new_transgression_path %>">
+        Please me, mortal!
+      </a>
+    <% end %>
+  </nav>
+</header>
+
+<%= javascript_include_tag 'login_signup.js' %>

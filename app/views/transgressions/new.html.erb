@@ -1,0 +1,17 @@
+<form action="<%= transgressions_path %>" method="POST"
+  class='transgression'>
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type="text" name="transgression[description]"
+    placeholder="Weaknesses are beautiful..."
+    value="<%= @transgression.description %>"><br/>
+  <select name="transgression[sin_type]">
+    <% Transgression::SIN_TYPES.each do |sin| %>
+      <option value="<%= sin %>"
+        <%= @transgression.sin_type == sin ? "selected" : "" %>>
+        <%= sin %>
+      </option>
+    <% end %>
+  </select>
+  <input type="submit" value="Here I am">
+</form>
