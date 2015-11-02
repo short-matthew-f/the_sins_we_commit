@@ -1,28 +1,60 @@
-== README
+# API Docs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Classical
 
-Things you may want to cover:
+User + Session are all done the 'old fashioned way' via server-rendered erb.
 
-* Ruby version
+ROOT (/): Renders the Sign In / Sign Up forms.
+POST /users will create a new user, redirect to ROOT
+POST /session will create a new session, redirect to SPA page
 
-* System dependencies
+---
+## JSON
 
-* Configuration
+GET /current_user will return JSON object containing currently logged in user
 
-* Database creation
+GET /transgressions will return array of transgressions complete with confessions subarray
 
-* Database initialization
+    ```json
+    {
+      transgressions: [
+        {
+          id: 3,
+          sin_type: "Gluttony",
+          description: "I love eating a whole box full of cucumbers, like a 20lb box"
+          confessions: [
+            {
+              description: "Some description",
+              occurred_at: "3 weeks ago"
+            }
+          ]
+        }
+      ]
+    }
+    ```
 
-* How to run the test suite
+POST /transgressions will take a JSON object as such:
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```json
+    {
+      authenticity_token: "osmeaksdfiohuiHDFIUSDHFUkjadfhjk324",
+      transgression: {
+        sin_type: "Some Sin",
+        description: "Some Description"
+      }
+    }
+    ```
 
-* Deployment instructions
+    And return the created transgression as an object.
 
-* ...
+POST /transgressions/:id/confessions will take a JSON object as such:
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    ```json
+    {
+      authenticity_token: "adsf123i478KJkhajksldfhjk0",
+      confession: {
+        description: "I did a thing",
+        occurred_at: "2015-03-27"
+      }
+    }
+    ```

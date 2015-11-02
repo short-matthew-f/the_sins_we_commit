@@ -1,3 +1,22 @@
-<% @transgressions.each do |trans| %>
-  <h5>For the sin of <%= trans.sin_type %>: <%= trans.description %></h5>
+
+<% @transgressions.each do |sin_type, trans| %>
+<h4>
+  For the sin of <em><%= sin_type %></em>, your weaknesses are:
+</h4>
+<ul>
+  <% trans.each do |t| %>
+    <li>
+      <%= t.description %>, with <%= t.confessions.count %> confessions:
+      <% if t.confessions.count > 0 %>
+        <ul>
+          <% t.confessions.each do |c| %>
+            <li>
+              "<%= c.description %>" - <%= c.occurred_at %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 <% end %>

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029180427) do
+ActiveRecord::Schema.define(version: 20151030132812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "confessions", force: :cascade do |t|
+    t.integer  "transgression_id"
+    t.datetime "occurred_at",      default: '2015-11-02 14:55:24', null: false
+    t.string   "description",                                      null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  add_index "confessions", ["transgression_id"], name: "index_confessions_on_transgression_id", using: :btree
 
   create_table "transgressions", force: :cascade do |t|
     t.integer  "user_id"
@@ -36,5 +46,6 @@ ActiveRecord::Schema.define(version: 20151029180427) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
+  add_foreign_key "confessions", "transgressions"
   add_foreign_key "transgressions", "users"
 end

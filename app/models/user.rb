@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
     minimum: 8, allow_nil: true
   }
 
-  has_many :transgressions
+  has_many :transgressions, dependent: :destroy
+  has_many :confessions, through: :transgressions
 end
