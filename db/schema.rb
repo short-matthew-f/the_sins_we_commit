@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030132812) do
+ActiveRecord::Schema.define(version: 20151102165102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "confessions", force: :cascade do |t|
     t.integer  "transgression_id"
-    t.datetime "occurred_at",      default: '2015-11-02 14:55:24', null: false
+    t.datetime "occurred_at",      default: '2015-10-30 13:30:09', null: false
     t.string   "description",                                      null: false
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20151030132812) do
     t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "session_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
