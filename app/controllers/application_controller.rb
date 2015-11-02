@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
+  def home
+    render '/home', layout: "angular"
+  end
+
   private
 
   def current_user

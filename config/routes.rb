@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
+  get 'application/home' #, to: 'application#home', as: :application_home
+
   resources :transgressions, only: [:index, :create], defaults: { format: :json } do
     resources :confessions, only: [:create], shallow: true
   end

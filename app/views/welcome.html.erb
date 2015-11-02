@@ -1,3 +1,10 @@
+<%= render partial: 'layouts/header' %>
+<% if flash[:message] %>
+  <div class="alert">
+    <%= flash[:message] %>
+  </div>
+<% end %>
+
 <h1>Welcome, sinner</h1>
 
 <h3>Please sign <em>up</em> to lift your burdens</h3>
@@ -27,3 +34,13 @@
     placeholder="desired password"><br/>
   <input type="submit" value="Sign in">
 </form>
+
+<% if current_user %>
+<hr/>
+<form action="<%= session_path %>" method="POST">
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Log Out!">
+</form>
+<% end %>
