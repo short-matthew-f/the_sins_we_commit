@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
-  resources :confessions
-  resources :transgressions
   root 'application#welcome'
 
-  get '/amiloggedin' => 'application#amiloggedin'
+  resources :transgressions, only: [:index, :create], defaults: { format: :json } do
+    resources :confessions, only: [:create], shallow: true
+  end
 
   # resources :users, only: [:create]
   post '/users' => 'users#create'
 
-  # sessiony stuff
-  # get '/session' => 'session#current_user'
-  #       angular?
-
+  # session stuff
+  get '/session' => 'session#current_sinner', defaults: { format: :json }
   post '/session' => 'session#create'
   delete '/session' => 'session#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
